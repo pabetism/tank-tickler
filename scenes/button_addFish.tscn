@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://crwo2dencs6i4"]
+
+[ext_resource type="Texture2D" uid="uid://bm3j213jdeei4" path="res://assets/sprites/Bubble64x64.png" id="1_fq43s"]
+[ext_resource type="Texture2D" uid="uid://bgmjgkd3k6vlj" path="res://assets/sprites/BubbleBlue64x64.png" id="1_qn8nb"]
+[ext_resource type="Texture2D" uid="uid://8o3y5wtn11es" path="res://assets/sprites/Fish/Tetra32x32.png" id="2_efrft"]
+[ext_resource type="Script" uid="uid://fejyil35wedd" path="res://scripts/add_fish.gd" id="4_uejej"]
+
+[node name="AddFish" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_qn8nb")
+texture_pressed = ExtResource("2_efrft")
+texture_hover = ExtResource("1_fq43s")
+script = ExtResource("4_uejej")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

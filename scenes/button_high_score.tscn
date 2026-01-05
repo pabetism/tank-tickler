@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3onn3qi6cggl"]
+
+[ext_resource type="Texture2D" uid="uid://cwv8nt3g6m055" path="res://assets/sprites/UI/Teal.png" id="1_c10a5"]
+[ext_resource type="Texture2D" uid="uid://cuj2k0tpxum6n" path="res://assets/sprites/UI/DarkBlue.png" id="2_kjiud"]
+[ext_resource type="Texture2D" uid="uid://bungos48pxd" path="res://assets/sprites/UI/Blue.png" id="3_di2yg"]
+[ext_resource type="Script" uid="uid://ch8msne7044xn" path="res://scripts/button_highscore.gd" id="4_c10a5"]
+
+[node name="HighScore" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_c10a5")
+texture_pressed = ExtResource("2_kjiud")
+texture_hover = ExtResource("3_di2yg")
+script = ExtResource("4_c10a5")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

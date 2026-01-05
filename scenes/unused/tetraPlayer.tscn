@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://baqqxlo00o527"]
+
+[ext_resource type="Script" uid="uid://dlj7vdtdobxyc" path="res://scripts/tetra_player.gd" id="1_7n5rh"]
+[ext_resource type="Texture2D" uid="uid://cgwk6heymaesr" path="res://assets/sprites/Fish/TetraDark32x32.png" id="2_7n5rh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wul23"]
+radius = 5.090523
+height = 30.54309
+
+[node name="tetraPlayer" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_7n5rh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(211, 100)
+texture = ExtResource("2_7n5rh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(210.99998, 98.99999)
+rotation = 1.7104226
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_wul23")

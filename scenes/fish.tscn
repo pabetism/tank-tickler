@@ -1,0 +1,102 @@
+[gd_scene load_steps=15 format=3 uid="uid://mqpsahk1piv8"]
+
+[ext_resource type="Script" uid="uid://bu6ajmimlw18c" path="res://scripts/tetra.gd" id="1_8g0i4"]
+[ext_resource type="Shader" uid="uid://hl68sl3sk0r1" path="res://assets/shaders/colourswap.gdshader" id="2_pgks6"]
+[ext_resource type="Texture2D" uid="uid://dgbjna7rdwqgq" path="res://assets/sprites/Fish/TetraAnimated32x32withMask.png" id="3_nub35"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wul23"]
+radius = 5.090523
+height = 30.54309
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6lgmd"]
+resource_local_to_scene = true
+shader = ExtResource("2_pgks6")
+shader_parameter/colorSet_1pri = Vector4(0, 0, 0, 0)
+shader_parameter/colorSet_1sec = Vector4(0, 0, 0, 0)
+shader_parameter/colorSet_2pri = Vector4(0, 0, 0, 0)
+shader_parameter/colorSet_2sec = Vector4(0, 0, 0, 0)
+shader_parameter/colorSet_2ter = Vector4(0, 0, 0, 0)
+shader_parameter/colorSet_3pri = Vector4(0, 0, 0, 0)
+shader_parameter/colorSet_3sec = Vector4(0, 0, 0, 0)
+shader_parameter/tolerance = 0.166000007885
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgks6"]
+atlas = ExtResource("3_nub35")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lgmd"]
+atlas = ExtResource("3_nub35")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpvan"]
+atlas = ExtResource("3_nub35")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21k1a"]
+atlas = ExtResource("3_nub35")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvcvt"]
+atlas = ExtResource("3_nub35")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x24sl"]
+atlas = ExtResource("3_nub35")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1s4w"]
+atlas = ExtResource("3_nub35")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ig6q"]
+atlas = ExtResource("3_nub35")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_phsjf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgks6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lgmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpvan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21k1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvcvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x24sl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1s4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ig6q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+collision_layer = 2
+script = ExtResource("1_8g0i4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.4305115e-06, -0.9999999)
+rotation = 1.7104226
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("CapsuleShape2D_wul23")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_6lgmd")
+sprite_frames = SubResource("SpriteFrames_phsjf")
+autoplay = "default"
+frame_progress = 0.19606

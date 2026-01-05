@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bji1adjkn7arg"]
+
+[ext_resource type="Script" uid="uid://c7d7ks80tnfiy" path="res://scripts/tank.gd" id="1_cpxye"]
+[ext_resource type="Texture2D" uid="uid://d0m8udlumf403" path="res://assets/sprites/Jazzbg1024x600.png" id="2_gyojk"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gss5u"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_imnp2"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4oh5q"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_33ebg"]
+
+[node name="Tank" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_cpxye")
+
+[node name="JazzBG" type="Sprite2D" parent="."]
+position = Vector2(512, 300)
+texture = ExtResource("2_gyojk")
+
+[node name="rWall" type="CollisionShape2D" parent="."]
+position = Vector2(1024, 0)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_gss5u")
+
+[node name="lWall" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_imnp2")
+
+[node name="tWall" type="CollisionShape2D" parent="."]
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_4oh5q")
+
+[node name="bWall" type="CollisionShape2D" parent="."]
+position = Vector2(0, 600)
+shape = SubResource("WorldBoundaryShape2D_33ebg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(512, 300)
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+title = "Fish Warning!"
+ok_button_text = "Oh!"
+dialog_text = "No fish to remove."

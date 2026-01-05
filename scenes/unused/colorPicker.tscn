@@ -1,0 +1,134 @@
+[gd_scene load_steps=14 format=3 uid="uid://bkki0ntbeyyks"]
+
+[ext_resource type="Shader" uid="uid://dgbha6klyqoi6" path="res://assets/shaders/colorPicker.gdshader" id="1_wdoji"]
+[ext_resource type="Texture2D" uid="uid://dgbjna7rdwqgq" path="res://assets/sprites/Fish/TetraAnimated32x32withMask.png" id="2_cqreg"]
+[ext_resource type="Script" uid="uid://cwofjvocqttfy" path="res://scripts/SpriteWithColorPicker.gd" id="3_cqreg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r541p"]
+shader = ExtResource("1_wdoji")
+shader_parameter/stripePrimary_utitilyMap = Color(0, 1, 0, 1)
+shader_parameter/tailPrimary_utitilyMap = Color(1, 0, 1, 1)
+shader_parameter/body_utitilyMap = Color(0, 0, 0, 1)
+shader_parameter/stripePrimary_set = Color(0, 0.9372549, 0, 1)
+shader_parameter/tailPrimary_set = Color(0, 0.24705882, 0.15294118, 1)
+shader_parameter/body_set = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pao1"]
+atlas = ExtResource("2_cqreg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihcwa"]
+atlas = ExtResource("2_cqreg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26vk5"]
+atlas = ExtResource("2_cqreg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c4ua"]
+atlas = ExtResource("2_cqreg")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4qr2"]
+atlas = ExtResource("2_cqreg")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2pe4"]
+atlas = ExtResource("2_cqreg")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bji6x"]
+atlas = ExtResource("2_cqreg")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qky2b"]
+atlas = ExtResource("2_cqreg")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j3p0v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pao1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihcwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26vk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3c4ua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4qr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2pe4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bji6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qky2b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ColorPicker" type="Node2D"]
+position = Vector2(28, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_r541p")
+position = Vector2(850, 304)
+scale = Vector2(9, 9)
+sprite_frames = SubResource("SpriteFrames_j3p0v")
+script = ExtResource("3_cqreg")
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
+offset_left = 163.0
+offset_top = 111.0
+offset_right = 475.0
+offset_bottom = 164.0
+
+[node name="Label" type="Label" parent="ColorPickerButton"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -24.0
+offset_right = 56.0
+offset_bottom = -1.0
+text = "Stripe"
+
+[node name="ColorPickerButton2" type="ColorPickerButton" parent="."]
+offset_left = 163.0
+offset_top = 254.0
+offset_right = 475.0
+offset_bottom = 307.0
+
+[node name="Label" type="Label" parent="ColorPickerButton2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -27.0
+offset_right = 48.0
+offset_bottom = -4.0
+text = "Tail"
+
+[node name="ColorPickerButton3" type="ColorPickerButton" parent="."]
+offset_left = 173.0
+offset_top = 464.0
+offset_right = 485.0
+offset_bottom = 517.0
+
+[node name="Label2" type="Label" parent="ColorPickerButton3"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = -41.0
+offset_right = 49.0
+offset_bottom = -18.0
+text = "Body"
+
+[connection signal="color_changed" from="ColorPickerButton" to="AnimatedSprite2D" method="_on_color_picker_button_color_changed"]
+[connection signal="color_changed" from="ColorPickerButton2" to="AnimatedSprite2D" method="_on_color_picker_button_2_color_changed"]
+[connection signal="color_changed" from="ColorPickerButton3" to="AnimatedSprite2D" method="_on_color_picker_button_3_color_changed"]

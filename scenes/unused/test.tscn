@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://c64sun10wef20"]
+
+[ext_resource type="Script" uid="uid://c7d7ks80tnfiy" path="res://scripts/tank.gd" id="1_iyx0m"]
+[ext_resource type="PackedScene" uid="uid://bji1adjkn7arg" path="res://scenes/tank.tscn" id="2_74lek"]
+[ext_resource type="PackedScene" uid="uid://mqpsahk1piv8" path="res://scenes/fish.tscn" id="3_j5jx5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lpvoh"]
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_iyx0m")
+
+[node name="Tank" parent="." instance=ExtResource("2_74lek")]
+
+[node name="CharacterBody2D" parent="Tank" instance=ExtResource("3_j5jx5")]
+material = SubResource("ShaderMaterial_lpvoh")
+position = Vector2(113, 125)

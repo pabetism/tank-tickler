@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://de21ynwoyaa2k"]
+
+[ext_resource type="Script" uid="uid://yiy2xmlntfsk" path="res://scripts/main_menu.gd" id="1_yqorp"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_yqorp")
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://b784ndysqfkpq"]
+
+[ext_resource type="Texture2D" uid="uid://cwv8nt3g6m055" path="res://assets/sprites/UI/Teal.png" id="1_qoq0w"]
+[ext_resource type="Texture2D" uid="uid://cuj2k0tpxum6n" path="res://assets/sprites/UI/DarkBlue.png" id="2_u7rw3"]
+[ext_resource type="Texture2D" uid="uid://bungos48pxd" path="res://assets/sprites/UI/Blue.png" id="3_riph6"]
+[ext_resource type="Script" uid="uid://bks82dti6m3c5" path="res://scripts/button_return_to_menu.gd" id="4_sw26p"]
+
+[node name="NewGame" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_qoq0w")
+texture_pressed = ExtResource("2_u7rw3")
+texture_hover = ExtResource("3_riph6")
+script = ExtResource("4_sw26p")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

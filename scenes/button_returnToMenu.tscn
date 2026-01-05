@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://w105dt0kddxn"]
+
+[ext_resource type="Texture2D" uid="uid://cwv8nt3g6m055" path="res://assets/sprites/UI/Teal.png" id="1_3ihi0"]
+[ext_resource type="Texture2D" uid="uid://cuj2k0tpxum6n" path="res://assets/sprites/UI/DarkBlue.png" id="2_drehq"]
+[ext_resource type="Texture2D" uid="uid://bungos48pxd" path="res://assets/sprites/UI/Blue.png" id="3_3cwni"]
+[ext_resource type="Script" uid="uid://bks82dti6m3c5" path="res://scripts/button_return_to_menu.gd" id="4_roftc"]
+
+[node name="CloseTank" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_3ihi0")
+texture_pressed = ExtResource("2_drehq")
+texture_hover = ExtResource("3_3cwni")
+script = ExtResource("4_roftc")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
