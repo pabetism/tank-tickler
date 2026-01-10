@@ -16,7 +16,7 @@ var max_y: float = 590.0
 func _ready():
 	var beta_colors : Array =[Color(0.6, 0.11, 0.10,1),Color(0.29, 0.69, 0.74),Color(0.1, 0.4, 0.65),Color(0.25,0.26,0.28),Color(0.77, 0.67, 0.43),Color(0.05, 0.1, 0.45),Color(0.23,0.16,0.18),Color(0.15,0,0.4)]
 	
-	set_palette(randi()%4,beta_colors.pick_random())
+	generate_palette(randi()%4,beta_colors.pick_random())
 
 	# Generate random coordinates within the bounds
 	var random_x: float = randf_range(min_x, max_x)
@@ -54,7 +54,7 @@ func _physics_process(delta: float):
 			$AnimatedSprite2D.flip_h = true 
 			$AnimatedSprite2D.rotation = 0 #left and up
 			
-func set_palette(index : int, color : Color) :
+func generate_palette(index : int, color : Color) :
 	################################
 	##One Colour->8 Colour Palette##
 	################################
@@ -83,17 +83,28 @@ func set_palette(index : int, color : Color) :
 	
 	set_all_colours(palette_colors)
 		
-
+func order_palette(set_colours_array : Array) -> Array:
+	set_colours_array.sort_custom(func(a, b): return a.v < b.v)
+	return set_colours_array
 
 func set_all_colours(set_colours_array : Array) -> void:
-	$AnimatedSprite2D.material.set_shader_parameter("ReplaceRed", set_colours_array[0])
-	$AnimatedSprite2D.material.set_shader_parameter("ReplaceGre", set_colours_array[1])
-	$AnimatedSprite2D.material.set_shader_parameter("ReplaceBlu", set_colours_array[2])
-	$AnimatedSprite2D.material.set_shader_parameter("ReplaceYel", set_colours_array[3])
-	$AnimatedSprite2D.material.set_shader_parameter("ReplaceCya", set_colours_array[4])
-	$AnimatedSprite2D.material.set_shader_parameter("ReplaceMag", set_colours_array[5])
-	$AnimatedSprite2D.material.set_shader_parameter("ReplaceBla", set_colours_array[6])
-	$AnimatedSprite2D.material.set_shader_parameter("ReplaceWhi", set_colours_array[7])
+	
+	set_colours_array=order_palette(set_colours_array)
+	if set_colours_array[7].v < 0.8 :
+		set_colours_array[7].v = randf_range(max(set_colours_array[6].v,0.6),1.0)
+		set_colours_array[7].s = randf_range(0.0,0.5)
+	
+	if set_colours_array[0].v > 0.2 :
+		set_colours_array[0].v = randf_range(0.0,min(set_colours_array[1].v,0.4))
+		set_colours_array[0].s = randf_range(0.0,0.5)
+	$AnimatedSprite2D.material.set_shader_parameter("ReplaceBlu", set_colours_array[0])
+	$AnimatedSprite2D.material.set_shader_parameter("ReplaceRed", set_colours_array[1])
+	$AnimatedSprite2D.material.set_shader_parameter("ReplaceMag", set_colours_array[2])
+	$AnimatedSprite2D.material.set_shader_parameter("ReplaceCya", set_colours_array[3])
+	$AnimatedSprite2D.material.set_shader_parameter("ReplaceBla", set_colours_array[4])
+	$AnimatedSprite2D.material.set_shader_parameter("ReplaceWhi", set_colours_array[5])
+	$AnimatedSprite2D.material.set_shader_parameter("ReplaceGre", set_colours_array[6])
+	$AnimatedSprite2D.material.set_shader_parameter("ReplaceYel", set_colours_array[7])
 
 func set_random() -> Array:
 	################################
