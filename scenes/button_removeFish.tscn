@@ -1,16 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://cueiuinvn7tex"]
+[gd_scene load_steps=5 format=3 uid="uid://cow5grs7ng4uc"]
 
 [ext_resource type="Texture2D" uid="uid://bgmjgkd3k6vlj" path="res://assets/sprites/BubbleBlue64x64.png" id="1_s5xmg"]
 [ext_resource type="Texture2D" uid="uid://8o3y5wtn11es" path="res://assets/sprites/Fish/Tetra32x32.png" id="2_pe086"]
 [ext_resource type="Texture2D" uid="uid://bm3j213jdeei4" path="res://assets/sprites/Bubble64x64.png" id="3_yanko"]
-[ext_resource type="Script" uid="uid://bp0dq00y44w1k" path="res://scripts/remove_fish.gd" id="4_s5xmg"]
 
-[node name="RemoveFish" type="TextureButton"]
+[sub_resource type="GDScript" id="GDScript_m4u5o"]
+script/source = "extends Node
+
+func _ready() -> void:
+	pass
+"
+
+[node name="RemoveFish" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = SubResource("GDScript_m4u5o")
+
+[node name="RemoveFish" type="TextureButton" parent="."]
+visible = false
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture_normal = ExtResource("1_s5xmg")
 texture_pressed = ExtResource("2_pe086")
 texture_hover = ExtResource("3_yanko")
-script = ExtResource("4_s5xmg")
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="pressed" from="RemoveFish" to="RemoveFish" method="_on_pressed"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Tank Tickler"
-run/main_scene="uid://ceyj2siwy7es5"
+run/main_scene="uid://de21ynwoyaa2k"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,10 @@ window/size/borderless=true
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/palettizev1/plugin.cfg")
 
 [layer_names]
 

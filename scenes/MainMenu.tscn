@@ -6,3 +6,4 @@
 script = ExtResource("1_yqorp")
 
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
+oversampling_override = 1.0

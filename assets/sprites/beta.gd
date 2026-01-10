@@ -1,4 +1,6 @@
 extends StaticBody2D
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.name = "tank"
@@ -50,8 +52,9 @@ func start_add_fish_process() -> void:
 	for child in $".".get_children():
 		if child.name.begins_with('Fish') :
 			fish_children.append(child)
+	
 	if fish_children.size() <= 15 :
-		var fish_index_random : int = randi() %5
+		var fish_index_random : int = randi() %2
 		if fish_index_random == 1 :
 			create_tetra()
 		else : 
@@ -61,27 +64,29 @@ func start_add_fish_process() -> void:
 		$AcceptDialog.popup_centered()
 
 func create_tetra() -> void:
-	var blueAnimatedTetra_scene: PackedScene = load("res://scenes/tetra.tscn")
-	var blueAnimatedTetra_new: CharacterBody2D = blueAnimatedTetra_scene.instantiate()
-	add_child(blueAnimatedTetra_new)
+	var blueAnimatedTetra_scene: PackedScene = load("res://scenes/fish.tscn")
+	var blueAnimatedTetra_new: CharacterBody2D = blueAnimatedTetra_scene.instantiate()# instantiate CharacterBody2D tetra
+	add_child(blueAnimatedTetra_new)# add CharacterBody2D tetra as childnode to Game
 	blueAnimatedTetra_new.owner = self
 	blueAnimatedTetra_new.name = "Fish"
+	
 
 func create_beta() -> void:
-	var blueAnimatedTetra_scene: PackedScene = load("res://scenes/beta.tscn")# preload CharacterBody2D tetra
-	var blueAnimatedTetra_new: CharacterBody2D = blueAnimatedTetra_scene.instantiate()
-	add_child(blueAnimatedTetra_new)
+	var blueAnimatedTetra_scene: PackedScene = load("res://scenes/fish.tscn")# preload CharacterBody2D tetra
+	var blueAnimatedTetra_new: CharacterBody2D = blueAnimatedTetra_scene.instantiate()# instantiate CharacterBody2D tetra
+	add_child(blueAnimatedTetra_new)# add CharacterBody2D tetra as childnode to Game
 	blueAnimatedTetra_new.owner = self
 	blueAnimatedTetra_new.name = "Fish"
 
 func add_add_button() -> void:
 	var AddFishButton_new = Button.new() 
-	add_child(AddFishButton_new)
+	add_child(AddFishButton_new)# add CharacterBody2D tetra as childnode to Game
 	AddFishButton_new.owner = self
 	AddFishButton_new.name = "AddFish"
 	AddFishButton_new.position = Vector2(800, 50)
 	AddFishButton_new.text = "Add Fish"
 
+	
 func add_remove_button() -> void:
 	var RemoveFishButton_new = Button.new() 
 	add_child(RemoveFishButton_new)
@@ -96,5 +101,6 @@ func change_tank() -> void:
 func close_tank() -> void:
 	self.queue_free()
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

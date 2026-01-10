@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cccfaybbwfs0a"]
+
+[ext_resource type="Texture2D" uid="uid://bm3j213jdeei4" path="res://assets/sprites/Bubble64x64.png" id="1_mxui8"]
+[ext_resource type="Texture2D" uid="uid://bgmjgkd3k6vlj" path="res://assets/sprites/BubbleBlue64x64.png" id="2_8cj5n"]
+[ext_resource type="Script" uid="uid://b7ceie5iwy0bb" path="res://scripts/button_exit_game.gd" id="3_mxui8"]
+
+[node name="ExitGame" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("3_mxui8")
+
+[node name="ExitGame" type="TextureButton" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_mxui8")
+texture_pressed = ExtResource("1_mxui8")
+texture_hover = ExtResource("2_8cj5n")
+
+[connection signal="pressed" from="ExitGame" to="ExitGame" method="_on_pressed"]

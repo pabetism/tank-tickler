@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://njaobd6w2a8"]
+
+[ext_resource type="Script" uid="uid://cnj6bu8ggho8n" path="res://scripts/beta.gd" id="1_p1gs2"]
+[ext_resource type="Shader" uid="uid://lk6eeqexqah4" path="res://assets/shaders/tank_tickler_Nearest_replace.gdshader" id="2_p1gs2"]
+[ext_resource type="Texture2D" uid="uid://baheq2n66j5qc" path="res://assets/sprites/Fish/Beta.png" id="3_fand1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wul23"]
+radius = 5.090523
+height = 30.54309
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fand1"]
+resource_local_to_scene = true
+shader = ExtResource("2_p1gs2")
+shader_parameter/ReplaceRed = Color(0, 0, 0, 1)
+shader_parameter/ReplaceGre = Color(0, 0, 0, 1)
+shader_parameter/ReplaceBlu = Color(0, 0, 0, 1)
+shader_parameter/ReplaceYel = Color(0, 0, 0, 1)
+shader_parameter/ReplaceCya = Color(0, 0, 0, 1)
+shader_parameter/ReplaceMag = Color(0, 0, 0, 1)
+shader_parameter/ReplaceBla = Color(0, 0, 0, 1)
+shader_parameter/ReplaceWhi = Color(0, 0, 0, 1)
+shader_parameter/colour_replace_function = 0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4go8p"]
+atlas = ExtResource("3_fand1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7kfyu"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4go8p")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+collision_layer = 2
+script = ExtResource("1_p1gs2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.4305115e-06, -0.9999999)
+rotation = 1.7104226
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("CapsuleShape2D_wul23")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_fand1")
+sprite_frames = SubResource("SpriteFrames_7kfyu")
+animation = &"new_animation"
+autoplay = "default"

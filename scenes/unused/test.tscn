@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c7d7ks80tnfiy" path="res://scripts/tank.gd" id="1_iyx0m"]
 [ext_resource type="PackedScene" uid="uid://bji1adjkn7arg" path="res://scenes/tank.tscn" id="2_74lek"]
-[ext_resource type="PackedScene" uid="uid://mqpsahk1piv8" path="res://scenes/fish.tscn" id="3_j5jx5"]
+[ext_resource type="PackedScene" uid="uid://mqpsahk1piv8" path="res://scenes/tetra.tscn" id="3_j5jx5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lpvoh"]
 

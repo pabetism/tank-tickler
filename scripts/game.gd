@@ -14,18 +14,17 @@ func add_tank() -> void :
 	tank_new.name = "tank"
 	
 func add_menu() -> void :
-	var menu_scene: PackedScene = load("res://scenes/MainMenu.tscn")# preload player tetra
-	var menu_new: Node2D = menu_scene.instantiate()# instantiate player tetra
-	add_child(menu_new)# add player tetra as childnode to Game
-	menu_new.owner = self
-	menu_new.name = "mainmenu"
-	print(menu_new)
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 
 func _process(delta: float) -> void :
-	var current_children = self.get_children()
-	if current_children.has("tank") :
+	var current_children : Array = self.get_children()
+	var children_names : Array = []
+	for child in current_children :
+		children_names.append(child.get_name())
+		
+	if children_names.has("tank") :
 		pass
-	elif  current_children.has("mainmenu") :
+	elif  children_names.has("mainmenu") :
 		pass
 	else :
 		print("Adding Menu.")
